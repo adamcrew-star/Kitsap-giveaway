@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#102b3b">
+  <meta name="description" content="Enter the Kitsap Roof Pros giveaway for your chance to win a free roof makeover. Local, trusted, and family owned.">
+  <title>Win a Free Roof Makeover | Kitsap Roof Pros Giveaway</title>
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Kitsap Roof Pros">
+  <meta property="og:url" content="https://giveaway.kitsaproofpros.com/">
+  <meta property="og:title" content="Win a Free Roof Makeover — Kitsap Roof Pros Giveaway">
+  <meta property="og:description" content="Enter for your chance to win. Quick and free — just drop your details below.">
+  <meta property="og:image" content="https://giveaway.kitsaproofpros.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Kitsap Roof Pros giveaway — win a free roof makeover">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Win a Free Roof Makeover — Kitsap Roof Pros Giveaway">
+  <meta name="twitter:description" content="Enter for your chance to win. Quick and free — just drop your details below.">
+  <meta name="twitter:image" content="https://giveaway.kitsaproofpros.com/og-image.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <div class="roof-lines" aria-hidden="true"></div>
+
+    <main class="giveaway-card">
+      <header class="brand">
+        <a href="https://kitsaproofpros.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Kitsap Roof Pros">
+          <img src="logo.svg" alt="Kitsap Roof Pros">
+        </a>
+      </header>
+
+      <section id="entry-step" class="step">
+        <div class="prize-badge">
+          <span class="prize-badge-icon" aria-hidden="true">🎁</span>
+          <span>Kitsap Roof Pros Giveaway</span>
+        </div>
+
+        <h1>Win a <span class="highlight">Free Roof Makeover</span></h1>
+        <p class="intro">Enter for your chance to win a professional roof cleaning &amp; tune-up from your local Kitsap County team. Drop your details below — it only takes a few seconds.</p>
+
+        <ul class="perks" aria-label="Why enter">
+          <li><span class="perk-check" aria-hidden="true">✓</span> 100% free to enter</li>
+          <li><span class="perk-check" aria-hidden="true">✓</span> Local, family-owned crew</li>
+          <li><span class="perk-check" aria-hidden="true">✓</span> Winner drawn monthly</li>
+        </ul>
+
+        <form id="giveaway-form" class="giveaway-form" novalidate>
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" placeholder="Jane Doe" required>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="jane@example.com" required>
+          </div>
+
+          <div class="field">
+            <label for="address">Address</label>
+            <input id="address" name="address" type="text" autocomplete="street-address" placeholder="304 White Pine Dr, Bremerton, WA" required>
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(360) 555-0199" required>
+          </div>
+
+          <fieldset class="interests">
+            <legend>Interested in</legend>
+            <div class="interests-grid">
+              <label class="interest"><input type="checkbox" name="interest" value="Re-roof" data-tag="7138379"><span>Re-roof</span></label>
+              <label class="interest"><input type="checkbox" name="interest" value="Roof Repair" data-tag="7138380"><span>Roof Repair</span></label>
+              <label class="interest"><input type="checkbox" name="interest" value="General Construction" data-tag="7138381"><span>General Construction</span></label>
+              <label class="interest"><input type="checkbox" name="interest" value="Windows" data-tag="7138382"><span>Windows</span></label>
+              <label class="interest interest-wide"><input type="checkbox" name="interest" value="Do not contact (unless I'm a winner)" data-tag="7138383"><span>Do not contact (unless I'm a winner)</span></label>
+            </div>
+          </fieldset>
+
+          <label class="consent">
+            <input id="consent" name="consent" type="checkbox" required>
+            <span><strong>YES! I want a free roof.</strong><span class="asterisk">*</span> Enter me in the giveaway and keep me posted with offers from Kitsap Roof Pros.</span>
+          </label>
+
+          <!-- Mailchimp anti-bot honeypot field: do not remove, and keep it hidden from users. -->
+          <div class="hp-field" aria-hidden="true">
+            <label for="hp-input">Leave this field empty</label>
+            <input id="hp-input" type="text" name="b_honeypot" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button id="submit-button" class="submit-button" type="submit">
+            <span class="submit-label">Enter the giveaway</span>
+            <svg class="submit-arrow" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>
+          </button>
+
+          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+          <p class="fine-print">*Exclusions and limitations apply.</p>
+        </form>
+
+        <p class="privacy-note">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6l-8-3z"/></svg>
+          We respect your privacy. No spam — unsubscribe anytime.
+        </p>
+      </section>
+
+      <section id="success-step" class="step" hidden>
+        <div class="success-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg>
+        </div>
+        <h2 class="success-title">You're entered! 🎉</h2>
+        <p class="intro">Thanks for entering the Kitsap Roof Pros giveaway. We'll email you if you win — good luck! In the meantime, feel free to explore what we do.</p>
+        <a class="primary-link" href="https://kitsaproofpros.com/" target="_blank" rel="noopener noreferrer">
+          Visit kitsaproofpros.com
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>
+        </a>
+      </section>
+
+      <footer>
+        <span>Locally owned and serving Kitsap County</span>
+        <span class="footer-separator" aria-hidden="true">•</span>
+        <a href="tel:+13609190732">(360) 919-0732</a>
+        <span class="footer-separator" aria-hidden="true">•</span>
+        <a href="https://kitsaproofpros.com/" target="_blank" rel="noopener noreferrer">kitsaproofpros.com</a>
+      </footer>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
