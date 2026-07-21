@@ -96,18 +96,12 @@ a {
 .giveaway-card {
   position: relative;
   z-index: 1;
-  width: min(560px, 100%);
+  width: min(1040px, 100%);
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.72);
-  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 26px;
   background: rgba(255, 255, 255, 0.985);
-  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
-}
-
-.brand {
-  display: flex;
-  justify-content: center;
-  padding: 30px 36px 14px;
+  box-shadow: 0 40px 110px rgba(0, 0, 0, 0.45);
 }
 
 .brand a {
@@ -116,12 +110,11 @@ a {
 
 .brand img {
   width: auto;
-  height: 62px;
+  height: 58px;
   object-fit: contain;
 }
 
 .step {
-  padding: 12px 44px 40px;
   animation: step-in 260ms ease both;
 }
 
@@ -129,26 +122,60 @@ a {
   display: none;
 }
 
+/* ---- Entry: two-panel layout ---- */
+#entry-step:not([hidden]) {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  align-items: stretch;
+}
+
+.hero-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 42px;
+  color: #fff;
+  background:
+    linear-gradient(155deg, rgba(52, 140, 32, 0.9), rgba(16, 43, 59, 0.9) 55%, rgba(9, 30, 44, 0.96)),
+    url("background.jpg") center center / cover no-repeat;
+}
+
+.hero-panel .brand {
+  margin-bottom: 26px;
+}
+
+.form-panel {
+  padding: 40px 42px;
+  background: var(--white);
+}
+
+.form-title {
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.form-sub {
+  margin: 6px 0 20px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
 .prize-badge {
   display: inline-flex;
+  align-self: flex-start;
   align-items: center;
   gap: 8px;
-  margin: 0 auto 16px;
+  margin: 0 0 18px;
   padding: 7px 14px;
   border-radius: 999px;
-  background: var(--green-soft);
-  color: var(--green-dark);
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: #fff;
   font-family: "Montserrat", sans-serif;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-}
-
-#entry-step:not([hidden]) {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .prize-badge-icon {
@@ -164,15 +191,13 @@ h3 {
 }
 
 h1 {
-  max-width: 440px;
-  margin-inline: auto;
-  font-size: clamp(29px, 6vw, 44px);
-  line-height: 1.12;
-  text-align: center;
+  font-size: clamp(30px, 3.4vw, 46px);
+  line-height: 1.1;
+  color: #fff;
 }
 
 .highlight {
-  color: var(--green-dark);
+  color: #7ede56;
 }
 
 .intro {
@@ -184,41 +209,49 @@ h1 {
   text-align: center;
 }
 
+.hero-panel .intro {
+  max-width: none;
+  margin: 14px 0 26px;
+  color: rgba(255, 255, 255, 0.86);
+  text-align: left;
+}
+
 .countdown {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   width: 100%;
-  max-width: 420px;
-  margin: 0 auto 24px;
+  margin: 0 0 24px;
   padding: 16px 18px;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 14px;
-  background: var(--panel);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .countdown-label {
-  color: var(--ink);
-  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
 .countdown-units {
   display: flex;
   gap: 8px;
+  width: 100%;
 }
 
 .cd-unit {
   display: flex;
+  flex: 1;
   flex-direction: column;
   align-items: center;
-  min-width: 58px;
-  padding: 8px 6px;
+  min-width: 0;
+  padding: 10px 6px;
   border-radius: 10px;
-  background: var(--navy);
+  background: rgba(0, 0, 0, 0.28);
   color: #fff;
 }
 
@@ -255,10 +288,9 @@ h1 {
 
 .perks {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px 18px;
-  margin: 0 0 26px;
+  flex-direction: column;
+  gap: 10px;
+  margin: auto 0 0;
   padding: 0;
   list-style: none;
 }
@@ -266,9 +298,9 @@ h1 {
 .perks li {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  color: var(--ink);
-  font-size: 13px;
+  gap: 9px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 14px;
   font-weight: 600;
 }
 
@@ -521,6 +553,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 44px 44px 40px;
   text-align: center;
 }
 
@@ -661,26 +694,47 @@ footer a:hover {
   }
 }
 
+/* Narrow phones: stack the two panels (iPad and up stay two-column) */
+@media (max-width: 680px) {
+  #entry-step:not([hidden]) {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-panel .brand {
+    margin-bottom: 20px;
+  }
+
+  .perks {
+    flex-flow: row wrap;
+    gap: 8px 20px;
+    margin-top: 22px;
+  }
+}
+
 @media (max-width: 560px) {
   .page {
     align-items: start;
-    padding: 20px 14px;
+    padding: 18px 12px;
   }
 
   .giveaway-card {
-    border-radius: 19px;
-  }
-
-  .brand {
-    padding: 24px 24px 10px;
+    border-radius: 20px;
   }
 
   .brand img {
     height: 52px;
   }
 
-  .step {
-    padding: 10px 22px 30px;
+  .hero-panel {
+    padding: 30px 24px;
+  }
+
+  .form-panel {
+    padding: 28px 24px 32px;
+  }
+
+  #success-step:not([hidden]) {
+    padding: 34px 24px 30px;
   }
 }
 
@@ -689,27 +743,12 @@ footer a:hover {
     grid-template-columns: 1fr;
   }
 
-  .countdown-units {
-    gap: 6px;
-  }
-
-  .cd-unit {
-    min-width: 0;
-    flex: 1;
-    padding: 8px 2px;
-  }
-
   .cd-num {
     font-size: 22px;
   }
 
-  .intro {
-    font-size: 14px;
-  }
-
-  .perks {
-    gap: 7px 14px;
-    margin-bottom: 22px;
+  .hero-panel .intro {
+    font-size: 15px;
   }
 
   footer {
