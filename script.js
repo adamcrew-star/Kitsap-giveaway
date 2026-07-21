@@ -121,6 +121,7 @@ function submitToMailchimp() {
 function showSuccess() {
   entryStep.hidden = true;
   successStep.hidden = false;
+  document.body.classList.add("entered");
   successStep.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
