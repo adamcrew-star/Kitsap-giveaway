@@ -13,6 +13,8 @@ const MAILCHIMP = {
   host: "kitsaproofpros.us14.list-manage.com",
   u: "1ca48ac180bdb25983e977ee1",
   id: "364af29c18",
+  // Tag added to every entry; the branded welcome automation triggers on it.
+  entryTag: "7138385",
 };
 
 const form = document.querySelector("#giveaway-form");
@@ -90,7 +92,9 @@ function submitToMailchimp() {
   const { first, last } = splitName(fields.name.value);
   const checked = Array.from(document.querySelectorAll('input[name="interest"]:checked'));
   const interests = checked.map((box) => box.value).join(", ");
-  const tags = checked.map((box) => box.dataset.tag).filter(Boolean).join(",");
+  const tags = [MAILCHIMP.entryTag]
+    .concat(checked.map((box) => box.dataset.tag).filter(Boolean))
+    .join(",");
 
   const params = new URLSearchParams();
   params.set("EMAIL", fields.email.value.trim());
