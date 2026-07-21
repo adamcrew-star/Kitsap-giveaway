@@ -148,3 +148,56 @@ requiredText.forEach((input) => {
     if (input.classList.contains("invalid")) input.classList.remove("invalid");
   });
 });
+
+/*
+ * Countdown to the entry deadline (read from #countdown[data-deadline]).
+ * When the deadline passes, the form is closed and an "ended" message shown.
+ */
+(function initCountdown() {
+  const countdown = document.querySelector("#countdown");
+  if (!countdown) return;
+
+  const deadline = new Date(countdown.dataset.deadline);
+  if (Number.isNaN(deadline.getTime())) return;
+
+  const parts = {
+    days: document.querySelector("#cd-days"),
+    hours: document.querySelector("#cd-hours"),
+    mins: document.querySelector("#cd-mins"),
+    secs: document.querySelector("#cd-secs"),
+  };
+  const statusEl = document.querySelector("#countdown-status");
+  const pad = (n) => String(n).padStart(2, "0");
+  let timer = null;
+
+  function closeGiveaway() {
+    countdown.classList.add("ended");
+    if (statusEl) statusEl.textContent = "This giveaway has ended. Thanks for your interest!";
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitLabel.textContent = "Entries closed";
+    }
+    form.querySelectorAll("input, button").forEach((el) => {
+      el.disabled = true;
+    });
+  }
+
+  function tick() {
+    const remaining = deadline.getTime() - Date.now();
+    if (remaining <= 0) {
+      parts.days.textContent = "0";
+      parts.hours.textContent = parts.mins.textContent = parts.secs.textContent = "00";
+      closeGiveaway();
+      window.clearInterval(timer);
+      return;
+    }
+    const totalSeconds = Math.floor(remaining / 1000);
+    parts.days.textContent = String(Math.floor(totalSeconds / 86400));
+    parts.hours.textContent = pad(Math.floor((totalSeconds % 86400) / 3600));
+    parts.mins.textContent = pad(Math.floor((totalSeconds % 3600) / 60));
+    parts.secs.textContent = pad(totalSeconds % 60);
+  }
+
+  tick();
+  timer = window.setInterval(tick, 1000);
+})();
