@@ -726,12 +726,24 @@ footer a:hover {
 
 @media (max-width: 560px) {
   .page {
-    align-items: start;
-    padding: 18px 12px;
+    align-items: stretch;
+    padding: 0;
+  }
+
+  .page::before,
+  .page::after {
+    display: none;
   }
 
   .giveaway-card {
-    border-radius: 20px;
+    width: 100%;
+    min-height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  #entry-step:not([hidden]) {
+    min-height: 100vh;
   }
 
   .brand img {
@@ -739,7 +751,7 @@ footer a:hover {
   }
 
   .hero-panel {
-    padding: 30px 24px;
+    padding: 34px 24px 30px;
   }
 
   .form-panel {
