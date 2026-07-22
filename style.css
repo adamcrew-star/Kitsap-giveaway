@@ -91,13 +91,41 @@ a {
   box-shadow: 0 40px 110px rgba(0, 0, 0, 0.45);
 }
 
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
 .brand a {
   display: inline-flex;
 }
 
-.brand img {
+.brand > a img {
   width: auto;
   height: 58px;
+  object-fit: contain;
+}
+
+.brand-x {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.fair-badge {
+  display: inline-flex;
+  padding: 7px 11px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+}
+
+.fair-badge img {
+  display: block;
+  width: auto;
+  height: 46px;
   object-fit: contain;
 }
 
@@ -764,6 +792,7 @@ body.entered footer a {
 
   .hero-panel .brand {
     margin-bottom: 20px;
+    justify-content: center;
     text-align: center;
   }
 
@@ -809,8 +838,12 @@ body.entered footer a {
     min-height: 100vh;
   }
 
-  .brand img {
-    height: 52px;
+  .brand > a img {
+    height: 50px;
+  }
+
+  .fair-badge img {
+    height: 40px;
   }
 
   .hero-panel {
