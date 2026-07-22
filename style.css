@@ -518,7 +518,8 @@ h1 {
 .fine-print {
   margin: 0;
   color: #93a1a8;
-  font-size: 11px;
+  font-size: 10.5px;
+  line-height: 1.5;
   text-align: center;
 }
 
@@ -675,6 +676,39 @@ footer a {
 
 footer a:hover {
   color: var(--green-dark);
+}
+
+/* Confirmation: content sits directly on the roof photo, no white card */
+body.entered .giveaway-card {
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+body.entered #success-step .success-title,
+body.entered #success-step .intro,
+body.entered #success-step .next-steps li,
+body.entered #success-step .share-line {
+  color: #fff;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.55);
+}
+
+body.entered #success-step .next-steps li + li {
+  border-top-color: rgba(255, 255, 255, 0.28);
+}
+
+body.entered #success-step .next-steps li strong {
+  color: #fff;
+}
+
+body.entered footer {
+  border-top-color: rgba(255, 255, 255, 0.28);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+body.entered footer a {
+  color: #fff;
 }
 
 @keyframes step-in {
