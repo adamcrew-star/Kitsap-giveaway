@@ -123,7 +123,7 @@ a {
   padding: 40px 42px;
   color: #fff;
   background:
-    linear-gradient(155deg, rgba(38, 110, 22, 0.95), rgba(14, 38, 52, 0.96) 55%, rgba(7, 24, 35, 0.99)),
+    linear-gradient(155deg, rgba(38, 110, 22, 0.72), rgba(14, 38, 52, 0.74) 55%, rgba(7, 24, 35, 0.86)),
     url("background.jpg") center center / cover no-repeat;
 }
 
