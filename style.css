@@ -679,6 +679,12 @@ footer a:hover {
 }
 
 /* Confirmation: content sits directly on the roof photo, no white card */
+body.entered .page {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(6, 22, 32, 0.42), transparent 60%),
+    linear-gradient(160deg, rgba(10, 28, 20, 0.66), rgba(5, 18, 28, 0.78));
+}
+
 body.entered .giveaway-card {
   background: transparent;
   box-shadow: none;
