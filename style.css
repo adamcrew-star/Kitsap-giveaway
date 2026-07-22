@@ -55,8 +55,8 @@ a {
   overflow: hidden;
   padding: 48px 24px;
   background:
-    radial-gradient(circle at 15% 12%, rgba(67, 176, 42, 0.45), transparent 30rem),
-    linear-gradient(150deg, rgba(52, 140, 32, 0.82), rgba(16, 43, 59, 0.8) 52%, rgba(9, 30, 44, 0.9));
+    radial-gradient(circle at 15% 12%, rgba(67, 176, 42, 0.28), transparent 30rem),
+    linear-gradient(150deg, rgba(52, 140, 32, 0.5), rgba(16, 43, 59, 0.48) 52%, rgba(9, 30, 44, 0.62));
 }
 
 .page::before,
@@ -123,7 +123,7 @@ a {
   padding: 40px 42px;
   color: #fff;
   background:
-    linear-gradient(155deg, rgba(38, 110, 22, 0.72), rgba(14, 38, 52, 0.74) 55%, rgba(7, 24, 35, 0.86)),
+    linear-gradient(155deg, rgba(30, 92, 16, 0.84), rgba(11, 32, 44, 0.86) 55%, rgba(6, 20, 30, 0.92)),
     url("background.jpg") center center / cover no-repeat;
 }
 
