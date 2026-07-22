@@ -123,6 +123,13 @@ function showSuccess() {
   successStep.hidden = false;
   document.body.classList.add("entered");
   successStep.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: "giveaway_entry_submitted",
+    site: "giveaway",
+    campaign: "Kitsap Roof Pros x Kitsap Fair & Stampede Giveaway",
+  });
 }
 
 form.addEventListener("submit", async (event) => {
