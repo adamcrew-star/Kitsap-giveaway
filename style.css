@@ -699,6 +699,29 @@ body.entered #success-step .share-line {
   text-shadow: 0 1px 14px rgba(0, 0, 0, 0.55);
 }
 
+body.entered #success-step .success-title {
+  font-size: clamp(30px, 5vw, 42px);
+}
+
+body.entered #success-step .intro {
+  max-width: 540px;
+  font-size: clamp(17px, 2.4vw, 20px);
+  line-height: 1.55;
+}
+
+body.entered #success-step .next-steps {
+  max-width: 480px;
+}
+
+body.entered #success-step .next-steps li {
+  font-size: clamp(15px, 2vw, 17px);
+}
+
+body.entered #success-step .share-line {
+  max-width: 480px;
+  font-size: clamp(15px, 2vw, 17px);
+}
+
 body.entered #success-step .next-steps li + li {
   border-top-color: rgba(255, 255, 255, 0.28);
 }
