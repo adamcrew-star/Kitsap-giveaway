@@ -121,7 +121,7 @@ a {
 .fair-badge img {
   display: block;
   width: auto;
-  height: 52px;
+  height: 74px;
   object-fit: contain;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45));
 }
@@ -840,7 +840,7 @@ body.entered footer a {
   }
 
   .fair-badge img {
-    height: 40px;
+    height: 62px;
   }
 
   .hero-panel {
