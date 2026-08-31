@@ -13,9 +13,9 @@ const MAILCHIMP = {
   host: "kitsaproofpros.us14.list-manage.com",
   u: "1ca48ac180bdb25983e977ee1",
   id: "364af29c18",
-  // Numeric Mailchimp tag id applied to every newsletter signup. Leave empty to
-  // send no tag; Mailchimp's embedded endpoint only accepts tag ids, not names.
-  signupTag: "",
+  // Numeric Mailchimp tag id applied to every newsletter signup ("Newsletter").
+  // The embedded endpoint only accepts tag ids, not names.
+  signupTag: "7138439",
 };
 
 const form = document.querySelector("#signup-form");
