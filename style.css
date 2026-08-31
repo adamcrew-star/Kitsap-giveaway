@@ -107,25 +107,6 @@ a {
   object-fit: contain;
 }
 
-.brand-x {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 22px;
-  font-weight: 300;
-  line-height: 1;
-}
-
-.fair-badge {
-  display: inline-flex;
-}
-
-.fair-badge img {
-  display: block;
-  width: auto;
-  height: 74px;
-  object-fit: contain;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45));
-}
-
 .step {
   animation: step-in 260ms ease both;
 }
@@ -633,10 +614,6 @@ body.entered footer a {
 
   .brand > a img {
     height: 50px;
-  }
-
-  .fair-badge img {
-    height: 62px;
   }
 
   .hero-panel {
