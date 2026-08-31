@@ -13,11 +13,12 @@ const MAILCHIMP = {
   host: "kitsaproofpros.us14.list-manage.com",
   u: "1ca48ac180bdb25983e977ee1",
   id: "364af29c18",
-  // Tag added to every entry; the branded welcome automation triggers on it.
-  entryTag: "7138385",
+  // Numeric Mailchimp tag id applied to every newsletter signup. Leave empty to
+  // send no tag; Mailchimp's embedded endpoint only accepts tag ids, not names.
+  signupTag: "",
 };
 
-const form = document.querySelector("#giveaway-form");
+const form = document.querySelector("#signup-form");
 const entryStep = document.querySelector("#entry-step");
 const successStep = document.querySelector("#success-step");
 const submitButton = document.querySelector("#submit-button");
@@ -26,14 +27,13 @@ const statusEl = document.querySelector("#form-status");
 const honeypot = document.querySelector("#hp-input");
 
 const fields = {
-  name: document.querySelector("#name"),
+  firstName: document.querySelector("#first-name"),
+  lastName: document.querySelector("#last-name"),
   email: document.querySelector("#email"),
-  address: document.querySelector("#address"),
   phone: document.querySelector("#phone"),
-  consent: document.querySelector("#consent"),
 };
 
-const requiredText = [fields.name, fields.email, fields.address, fields.phone];
+const requiredText = [fields.firstName, fields.lastName, fields.email];
 
 function setStatus(message, type) {
   statusEl.textContent = message;
@@ -42,12 +42,6 @@ function setStatus(message, type) {
 
 function validEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-}
-
-function splitName(full) {
-  const parts = full.trim().split(/\s+/);
-  const first = parts.shift() || "";
-  return { first, last: parts.join(" ") };
 }
 
 function validate() {
@@ -66,14 +60,9 @@ function validate() {
     setStatus(
       firstInvalid === fields.email && fields.email.value.trim()
         ? "Please enter a valid email address."
-        : "Please fill in all of your contact details.",
+        : "Please fill in your name and email.",
       "error"
     );
-    return false;
-  }
-
-  if (!fields.consent.checked) {
-    setStatus('Please check "YES! I want a free roof" to enter.', "error");
     return false;
   }
 
@@ -89,22 +78,12 @@ function validate() {
  * so the caller treats a completed request as success (optimistic).
  */
 function submitToMailchimp() {
-  const { first, last } = splitName(fields.name.value);
-  const checked = Array.from(document.querySelectorAll('input[name="interest"]:checked'));
-  const interests = checked.map((box) => box.value).join(", ");
-  const tags = [MAILCHIMP.entryTag]
-    .concat(checked.map((box) => box.dataset.tag).filter(Boolean))
-    .join(",");
-
   const params = new URLSearchParams();
   params.set("EMAIL", fields.email.value.trim());
-  params.set("FNAME", first);
-  params.set("LNAME", last);
-  params.set("ADDR", fields.address.value.trim());
+  params.set("FNAME", fields.firstName.value.trim());
+  params.set("LNAME", fields.lastName.value.trim());
   params.set("PHONE", fields.phone.value.trim());
-  params.set("INTEREST", interests);
-  // Apply a Mailchimp tag per selected checkbox (comma-separated tag IDs).
-  params.set("tags", tags);
+  if (MAILCHIMP.signupTag) params.set("tags", MAILCHIMP.signupTag);
   // Mailchimp bot-detection honeypot: named b_<u>_<id>, must stay empty.
   params.set("b_" + MAILCHIMP.u + "_" + MAILCHIMP.id, honeypot.value);
 
@@ -125,8 +104,8 @@ function showSuccess() {
   successStep.scrollIntoView({ behavior: "smooth", block: "nearest" });
 
   if (typeof window.gtag === "function") {
-    window.gtag("event", "giveaway_entry_submitted", {
-      campaign_name: "Kitsap Roof Pros x Kitsap Fair & Stampede Giveaway",
+    window.gtag("event", "newsletter_signup_submitted", {
+      campaign_name: "Kitsap Roof Pros Giveaways & Events",
     });
   }
 }
@@ -138,7 +117,7 @@ form.addEventListener("submit", async (event) => {
   if (!validate()) return;
 
   submitButton.disabled = true;
-  submitLabel.textContent = "Entering…";
+  submitLabel.textContent = "Signing up…";
 
   try {
     await submitToMailchimp();
@@ -146,7 +125,7 @@ form.addEventListener("submit", async (event) => {
   } catch (error) {
     setStatus("We couldn't reach the sign-up service. Please try again in a moment.", "error");
     submitButton.disabled = false;
-    submitLabel.textContent = "Enter the giveaway";
+    submitLabel.textContent = "Sign Up for Updates";
   }
 });
 
@@ -155,56 +134,3 @@ requiredText.forEach((input) => {
     if (input.classList.contains("invalid")) input.classList.remove("invalid");
   });
 });
-
-/*
- * Countdown to the entry deadline (read from #countdown[data-deadline]).
- * When the deadline passes, the form is closed and an "ended" message shown.
- */
-(function initCountdown() {
-  const countdown = document.querySelector("#countdown");
-  if (!countdown) return;
-
-  const deadline = new Date(countdown.dataset.deadline);
-  if (Number.isNaN(deadline.getTime())) return;
-
-  const parts = {
-    days: document.querySelector("#cd-days"),
-    hours: document.querySelector("#cd-hours"),
-    mins: document.querySelector("#cd-mins"),
-    secs: document.querySelector("#cd-secs"),
-  };
-  const statusEl = document.querySelector("#countdown-status");
-  const pad = (n) => String(n).padStart(2, "0");
-  let timer = null;
-
-  function closeGiveaway() {
-    countdown.classList.add("ended");
-    if (statusEl) statusEl.textContent = "This giveaway has ended. Thanks for your interest!";
-    if (submitButton) {
-      submitButton.disabled = true;
-      submitLabel.textContent = "Entries closed";
-    }
-    form.querySelectorAll("input, button").forEach((el) => {
-      el.disabled = true;
-    });
-  }
-
-  function tick() {
-    const remaining = deadline.getTime() - Date.now();
-    if (remaining <= 0) {
-      parts.days.textContent = "0";
-      parts.hours.textContent = parts.mins.textContent = parts.secs.textContent = "00";
-      closeGiveaway();
-      window.clearInterval(timer);
-      return;
-    }
-    const totalSeconds = Math.floor(remaining / 1000);
-    parts.days.textContent = String(Math.floor(totalSeconds / 86400));
-    parts.hours.textContent = pad(Math.floor((totalSeconds % 86400) / 3600));
-    parts.mins.textContent = pad(Math.floor((totalSeconds % 3600) / 60));
-    parts.secs.textContent = pad(totalSeconds % 60);
-  }
-
-  tick();
-  timer = window.setInterval(tick, 1000);
-})();
