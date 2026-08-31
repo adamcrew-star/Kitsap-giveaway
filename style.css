@@ -228,11 +228,7 @@ h1 {
   text-align: left;
 }
 
-.countdown {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
+.wrapped-note {
   width: 100%;
   margin: 0 0 24px;
   padding: 16px 18px;
@@ -241,61 +237,17 @@ h1 {
   background: rgba(255, 255, 255, 0.08);
 }
 
-.countdown-label {
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.countdown-units {
-  display: flex;
-  gap: 8px;
-  width: 100%;
-}
-
-.cd-unit {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-  min-width: 0;
-  padding: 10px 6px;
-  border-radius: 10px;
-  background: rgba(0, 0, 0, 0.28);
+.wrapped-title {
   color: #fff;
+  font-size: 15px;
+  letter-spacing: 0.01em;
 }
 
-.cd-num {
-  font-family: "Montserrat", system-ui, sans-serif;
-  font-size: 26px;
-  font-weight: 800;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-}
-
-.cd-word {
-  margin-top: 4px;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.72);
-}
-
-.countdown-status {
-  color: var(--green-dark);
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.countdown.ended .countdown-units {
-  opacity: 0.45;
-}
-
-.countdown.ended .countdown-status {
-  color: var(--muted);
+.wrapped-note p {
+  margin: 8px 0 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 13.5px;
+  line-height: 1.55;
 }
 
 .perks {
@@ -314,13 +266,6 @@ h1 {
   color: rgba(255, 255, 255, 0.92);
   font-size: 14px;
   font-weight: 600;
-}
-
-.announce-note {
-  margin: 16px 0 0;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 12.5px;
-  line-height: 1.5;
 }
 
 .perk-check {
@@ -384,84 +329,6 @@ h1 {
 .field input.invalid {
   border-color: #d64545;
   background: #fdf2f2;
-}
-
-.interests {
-  margin: 2px 0 0;
-  padding: 0;
-  border: 0;
-}
-
-.interests legend {
-  padding: 0;
-  margin-bottom: 9px;
-  font-family: "Montserrat", sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--navy);
-}
-
-.interests-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-
-.interest {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 11px 13px;
-  border: 2px solid var(--line);
-  border-radius: 11px;
-  background: var(--panel);
-  color: var(--ink);
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: border-color 160ms ease, background 160ms ease;
-}
-
-.interest input {
-  flex: none;
-  width: 17px;
-  height: 17px;
-  accent-color: var(--green);
-}
-
-.interest:hover,
-.interest:focus-within {
-  border-color: var(--green);
-  background: var(--green-soft);
-}
-
-.interest:has(input:checked) {
-  border-color: var(--green);
-  background: var(--green-soft);
-}
-
-.interest-wide {
-  grid-column: 1 / -1;
-}
-
-.consent {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin-top: 2px;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.5;
-  text-align: left;
-  cursor: pointer;
-}
-
-.consent input {
-  flex: none;
-  width: 18px;
-  height: 18px;
-  margin-top: 1px;
-  accent-color: var(--green);
 }
 
 .hp-field {
@@ -530,24 +397,6 @@ h1 {
   color: var(--green-dark);
 }
 
-.consent strong {
-  color: var(--navy);
-  font-weight: 800;
-}
-
-.asterisk {
-  color: var(--green-dark);
-  font-weight: 800;
-}
-
-.fine-print {
-  margin: 0;
-  color: #93a1a8;
-  font-size: 10.5px;
-  line-height: 1.5;
-  text-align: center;
-}
-
 .privacy-note {
   display: flex;
   justify-content: center;
@@ -600,42 +449,6 @@ h1 {
 .success-title {
   font-size: clamp(26px, 4vw, 34px);
   line-height: 1.15;
-}
-
-.next-steps {
-  width: 100%;
-  max-width: 420px;
-  margin: 4px auto 18px;
-  padding: 0;
-  list-style: none;
-  text-align: left;
-}
-
-.next-steps li {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 11px 0;
-  color: var(--ink);
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.next-steps li + li {
-  border-top: 1px solid var(--line);
-}
-
-.step-num {
-  flex: none;
-  display: grid;
-  place-items: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: var(--green);
-  color: #fff;
-  font-size: 13px;
-  font-weight: 700;
 }
 
 .share-line {
@@ -718,7 +531,6 @@ body.entered .giveaway-card {
 
 body.entered #success-step .success-title,
 body.entered #success-step .intro,
-body.entered #success-step .next-steps li,
 body.entered #success-step .share-line {
   color: #fff;
   text-shadow: 0 1px 14px rgba(0, 0, 0, 0.55);
@@ -734,25 +546,9 @@ body.entered #success-step .intro {
   line-height: 1.55;
 }
 
-body.entered #success-step .next-steps {
-  max-width: 540px;
-}
-
-body.entered #success-step .next-steps li {
-  font-size: clamp(17px, 2.3vw, 20px);
-}
-
 body.entered #success-step .share-line {
   max-width: 540px;
   font-size: clamp(17px, 2.3vw, 20px);
-}
-
-body.entered #success-step .next-steps li + li {
-  border-top-color: rgba(255, 255, 255, 0.28);
-}
-
-body.entered #success-step .next-steps li strong {
-  color: #fff;
 }
 
 body.entered footer {
@@ -801,8 +597,8 @@ body.entered footer a {
     text-align: center;
   }
 
-  .countdown {
-    align-items: center;
+  .wrapped-note {
+    text-align: center;
   }
 
   .perks {
@@ -857,14 +653,6 @@ body.entered footer a {
 }
 
 @media (max-width: 430px) {
-  .interests-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .cd-num {
-    font-size: 22px;
-  }
-
   .hero-panel .intro {
     font-size: 15px;
   }
